@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+    <title>Current moscow time</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+    <body>
+        <h1>Current time in Moscow:</h1>
+        <div class="container">
+            {{hour}} : {{ minute }} : {{ second  }}
+        </div>
+    </body>
+</html>
