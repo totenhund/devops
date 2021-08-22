@@ -12,5 +12,3 @@ Simple web app showing current Moscow Time
 
 ```docker pull totenhund/python_app_devops:latest  ```\
 ```docker run -p 5000:5000 totenhund/python_app_devops ```
-
-After running image go to http://172.17.0.3:5000/ 
