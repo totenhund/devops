@@ -1,9 +1,8 @@
-name: Flask web app
+name: Flask web application
 
 on:
   push:
-    branches:
-      - 'main'
+    branches: [ main ]
       
 env:
   APP_PATH: ./python_app  
