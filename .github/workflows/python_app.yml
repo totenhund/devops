@@ -11,6 +11,13 @@ env:
   IMAGE_NAME: totenhund/python_app_devops  
 
 jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
   run_tests:
     runs-on: [ubuntu-latest]
     steps:
