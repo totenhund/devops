@@ -1,7 +1,10 @@
 name: Flask web app
 
-on: push
-
+on:
+  push:
+    branches:
+      - 'main'
+      
 env:
   APP_PATH: ./python_app  
   TESTS: tests  
