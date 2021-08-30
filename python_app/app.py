@@ -1,11 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Blueprint
 from datetime import datetime
 import pytz
 
-app = Flask(__name__)
+bp = Blueprint('Time', __name__)
 
 
-@app.route('/')
+def create_app():
+    app = Flask(__name__)
+    app.register_blueprint(bp)
+    return app
+
+
+@bp.route('/')
 def example():
     moscow_zone = pytz.timezone("Europe/Moscow")
     moscow_time = datetime.now(moscow_zone)
@@ -16,4 +22,4 @@ def example():
 
 
 if __name__ == '__main__':
-    app.run()
+    create_app().run()
