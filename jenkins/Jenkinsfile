@@ -2,6 +2,7 @@ pipeline {
 
     environment {
         APP_PATH = 'python_app'
+        APP_PATH_JENKINS_DOCKER = 'python_app/jenkins/jenkins_docker'
         CODE = 'app.py'
         TESTS = 'tests'
         registry = "totenhund/devops_lab"
