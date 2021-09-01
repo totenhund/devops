@@ -23,7 +23,7 @@ pipeline {
         stage('deps') {
             steps {
                 dir("${APP_PATH}") {
-                    sh 'pip3 install -r python_app/requirements.txt'
+                    sh 'pip3 install -r requirements.txt'
                 }
             }
         }
