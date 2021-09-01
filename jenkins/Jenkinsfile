@@ -48,7 +48,7 @@ pipeline {
         }
         stage('Build docker image') {
             steps{
-                dir("${APP_PATH}") {
+                dir("${APP_PATH_JENKINS_DOCKER}") {
                     script {
                         dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
                     }
