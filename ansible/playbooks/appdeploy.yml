@@ -1,0 +1,7 @@
+---
+- name: Deploy flask app to the server
+  hosts: devops
+  become: yes
+
+  roles:
+    - roles/appdeploy

@@ -4,6 +4,7 @@ import pytz
 
 bp = Blueprint('Time', __name__)
 
+app = Flask(__name__)
 
 def create_app():
     app = Flask(__name__)
@@ -11,7 +12,7 @@ def create_app():
     return app
 
 
-@bp.route('/')
+@app.route('/')
 def example():
     moscow_zone = pytz.timezone("Europe/Moscow")
     moscow_time = datetime.now(moscow_zone)
@@ -22,4 +23,4 @@ def example():
 
 
 if __name__ == '__main__':
-    create_app().run()
+    app.run(host="0.0.0.0", port=5000)

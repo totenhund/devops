@@ -1,0 +1,6 @@
+---
+# vars file for appdeploy
+remote_install_path: /opt/app_python
+docker_image_name: totenhund/devops_lab
+docker_image_version: latest
+docker_compose_name: docker-compose.yml
