@@ -3,7 +3,7 @@
     1.  Firstly I created docker-compose
     2.  After that I added couple of docker images that are needed (Grafana, Loki)
     3.  Pull and run docker-compose 
-    4.  To see logs, I added Loki as data source: [Screen 1](devops/blob/master/monitoring/screens/loki_datasource.png)
+    4.  To see logs, I added Loki as data source: ![Screen 1](devops/blob/master/monitoring/screens/loki_datasource.png)
     5.  I checked that Grafana is showing some data: [Screen 2](screens/loki.png)
     6.  I perfomed some actions on my web app and checked that logs are correct: [Screen 3](screens/loki_logs.png)
     
