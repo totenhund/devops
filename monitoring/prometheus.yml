@@ -1,14 +1,26 @@
 global:
-  scrape_interval:     10s
-  evaluation_interval: 10s
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+
+rule_files:
+  - 'alert.rules'
+
+# alert
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "alertmanager:9093"
 
 scrape_configs:
-  - job_name: web
-    static_configs:
-      - targets: ['web:8000']
-  - job_name: prometheus
-    static_configs:
-      - targets: ['localhost:9090']
-  - job_name: loki
+  - job_name: loki_logging
     static_configs:
       - targets: ['loki:3100']
+  - job_name: web_app
+    static_configs:
+      - targets: ['web:8000']
+  - job_name: prometheus_metrics
+    static_configs:
+      - targets: ['localhost:9090']

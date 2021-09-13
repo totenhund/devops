@@ -41,6 +41,5 @@ scrape_configs:
         image_name:
         container_name:
     - match:
-        # drop all logs for all containers that don't have --log-opt: tag: "{{:ImageName}}|{{:Name}}"
         selector: '{job="docker",container_name="",image_name=""}'
         action: drop
