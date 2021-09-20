@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devopslab9-deployment
+  labels:
+    app: devopslab9
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devopslab9
+  template:
+    metadata:
+      labels:
+        app: devopslab9
+    spec:
+      containers:
+      - name: devopslab9
+        image: totenhund/devops_lab
+        ports:
+        - containerPort: 5000
