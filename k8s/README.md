@@ -59,6 +59,29 @@ Run to open app
 minikube service devopslab9-service
 ```
 
+#### 3rd part: Helm
+
+I installed helm with command:
+
+```
+sudo snap install helm --classic
+```
+
+Configuration of helm 
+
+```
+helm create devopslab9
+
+helm package devopslab9
+
+helm install devopslab9 ./devopslab9-0.1.0.tgz  
+```
+
+After that I run to open app
+
+```
+minikube service devopslab9    
+```
 
 #### Output of kubectl get pods,svc:
 
@@ -72,5 +95,8 @@ kubectl get pods,svc
 
 2nd part output
 
-![Screen1](screens/2ndouput.png)
+![Screen2](screens/2ndouput.png)
 
+3rd part helm output
+
+![Screen3](screens/3rdhelm.png)
