@@ -19,7 +19,17 @@ def example():
     time_h = moscow_time.strftime("%H")
     time_m = moscow_time.strftime("%M")
     time_s = moscow_time.strftime("%S")
+    f = open("counter.txt")
+    counter = f.read()
+    f = open("counter.txt", "w")
+    f.write(str(int(counter) + 1))
     return render_template('index.html', hour=str(time_h), minute=str(time_m), second=str(time_s))
+
+
+@app.route('/visits')
+def visits():
+    f = open("counter.txt")
+    return render_template('visits.html', visits=f.read())
 
 
 if __name__ == '__main__':
