@@ -4,8 +4,8 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY python_app/requirements.txt python_app/requirements.txt
-RUN pip3 install -r python_app/requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
 

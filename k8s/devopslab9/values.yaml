@@ -2,20 +2,20 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+replicaCount: 3
 
 image:
   repository: totenhund/devops_lab
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-secrets:
-  name: secret
-  value: totenhund
+#secrets:
+#  name: secret
+#  value: totenhund
 
-configmap:
-    name: my-config
+#configmap:
+#    name: my-config
 
 imagePullSecrets: []
 nameOverride: ""
@@ -46,6 +46,14 @@ securityContext: {}
 service:
   type: LoadBalancer
   port: 5000
+
+envs:
+  filepath: /counter.txt
+
+volumeClaim:
+  name: web-txt
+  storage: 64Mi
+  mountPath: /python_app/
 
 ingress:
   enabled: false

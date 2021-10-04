@@ -1,11 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "devopslab9.fullname" . }}
   labels:
     {{- include "devopslab9.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
+  serviceName: {{ include "devopslab9.fullname" . }}
+  podManagementPolicy: "Parallel"
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
@@ -48,19 +50,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: secret
-                  key: value
+            - name: FILEPATH
+              value: {{ .Values.envs.filepath }}
           volumeMounts:
-            - name: config-volume
-              mountPath: config.json
-              subPath: config.json
-      volumes:
-        - name: config-volume
-          configMap:
-            name: {{ .Values.configmap.name }}
+            - name: {{ .Values.volumeClaim.name }}
+              mountPath: {{ .Values.volumeClaim.mountPath }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -73,3 +67,12 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ .Values.volumeClaim.name }}
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.volumeClaim.storage }}
