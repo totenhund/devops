@@ -55,6 +55,10 @@ volumeClaim:
   storage: 64Mi
   mountPath: /python_app/
 
+initVolume:
+  name: directory
+  mountPath: /html
+
 ingress:
   enabled: false
   className: ""
